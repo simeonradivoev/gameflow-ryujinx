@@ -5,6 +5,10 @@
   "version": "0.0.1",
   "main": "index.ts",
   "category": "emulators",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/simeonradivoev/gameflow-ryujinx"
+  },
   "devDependencies": {
     "@types/bun": "latest"
   },
