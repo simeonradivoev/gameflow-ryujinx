@@ -1,0 +1,23 @@
+{
+  "name": "@simeonradivoev/gameflow-ryujinx",
+  "displayName": "Ryujinx Integration",
+  "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Ryujinx.svg/120px-Ryujinx.svg.png",
+  "version": "0.0.1",
+  "main": "index.ts",
+  "category": "emulators",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "@simeonradivoev/gameflow-sdk": "^1.5.0",
+    "typescript": "^5"
+  },
+  "keywords": [
+    "integration",
+    "emulator",
+    "switch",
+    "ryujinx",
+    "gameflow-plugin",
+    "gameflow"
+  ]
+}
