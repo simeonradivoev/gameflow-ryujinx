@@ -1,8 +1,9 @@
 {
   "name": "@simeonradivoev/gameflow-ryujinx",
   "displayName": "Ryujinx Integration",
+  "description": "Ryujinx Integration for gameflow deck",
   "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Ryujinx.svg/120px-Ryujinx.svg.png",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "index.ts",
   "category": "emulators",
   "repository": {
@@ -16,7 +17,6 @@
     "@types/bun": "latest"
   },
   "peerDependencies": {
-    "@simeonradivoev/gameflow-sdk": "^1.5.0",
     "typescript": "^5"
   },
   "keywords": [
@@ -26,5 +26,8 @@
     "ryujinx",
     "gameflow-plugin",
     "gameflow"
-  ]
+  ],
+  "dependencies": {
+    "@simeonradivoev/gameflow-sdk": "^1.5.0"
+  }
 }
