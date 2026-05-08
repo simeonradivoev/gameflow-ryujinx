@@ -1,12 +1,11 @@
 import
 {
-  config,
-  type EmulatorCapabilities,
   type PluginLoadingContextType,
   type PluginType,
 } from "@simeonradivoev/gameflow-sdk";
 import desc from "./package.json";
 import path from "node:path";
+import type { EmulatorCapabilities } from "@simeonradivoev/gameflow-sdk/shared";
 
 export default class RYUJINXIntegration implements PluginType
 {
@@ -54,23 +53,23 @@ export default class RYUJINXIntegration implements PluginType
 
     ctx.hooks.games.emulatorLaunch.tapPromise(
       { name: desc.name, emulator: this.emulator },
-      async (ctx) =>
+      async ({ autoValidCommand }) =>
       {
         const args: string[] = [];
 
-        if (config.get("launchInFullscreen"))
+        if (ctx.app.config.get("launchInFullscreen"))
           args.push(`--fullscreen`);
 
-        if (ctx.autoValidCommand.metadata.romPath)
+        if (autoValidCommand.metadata.romPath)
         {
-          args.push(ctx.autoValidCommand.metadata.romPath);
+          args.push(autoValidCommand.metadata.romPath);
         }
 
-        if (ctx.autoValidCommand.emulatorSource === 'store')
+        if (autoValidCommand.emulatorSource === 'store')
         {
-          args.push(`-r`, path.join(config.get("downloadPath"), "storage", this.emulator));
+          args.push(`-r`, path.join(ctx.app.config.get("downloadPath"), "storage", this.emulator));
 
-          const savesPath = path.join(config.get("downloadPath"), "storage", this.emulator, "bis", 'user', 'save');
+          const savesPath = path.join(ctx.app.config.get("downloadPath"), "storage", this.emulator, "bis", 'user', 'save');
           return { args, savesPath: { [this.emulator]: { cwd: savesPath } } };
         }
 
