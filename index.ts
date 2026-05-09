@@ -6,6 +6,7 @@ import
 import desc from "./package.json";
 import path from "node:path";
 import type { EmulatorCapabilities } from "@simeonradivoev/gameflow-sdk/shared";
+import { ensureDir } from 'fs-extra';
 
 export default class RYUJINXIntegration implements PluginType
 {
@@ -65,9 +66,14 @@ export default class RYUJINXIntegration implements PluginType
           args.push(autoValidCommand.metadata.romPath);
         }
 
+        const biosPath = path.join(ctx.app.config.get("downloadPath"), "bios", this.emulator);
+        args.push('--install-firmware', biosPath);
+
         if (autoValidCommand.emulatorSource === 'store')
         {
-          args.push(`-r`, path.join(ctx.app.config.get("downloadPath"), "storage", this.emulator));
+          const rootPath = path.join(ctx.app.config.get("downloadPath"), "storage", this.emulator);
+          ensureDir(rootPath);
+          args.push(`--root-data-dir`, rootPath);
 
           const savesPath = path.join(ctx.app.config.get("downloadPath"), "storage", this.emulator, "bis", 'user', 'save');
           return { args, savesPath: { [this.emulator]: { cwd: savesPath } } };

@@ -7,7 +7,8 @@
   },
   "main": "dist/index.js",
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "@types/fs-extra": "^11.0.4"
   },
   "peerDependencies": {
     "@simeonradivoev/gameflow-sdk": "^1.5.2",
