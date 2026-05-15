@@ -31,6 +31,7 @@
   ],
   "scripts": {
     "build": "bunx gameflow-build --entry=index.ts",
+    "prepublishOnly": "bun run build",
     "publish": "bun publish --access public"
   }
 }
